@@ -97,5 +97,4 @@ The name of an overloaded operator is operator x, where x is the operator.
 
 ### Templates 
 
-### Macros
 

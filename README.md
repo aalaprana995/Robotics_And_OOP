@@ -441,6 +441,8 @@ int main()
 - When we define a static member outside the class, we do not repeat the static keyword. 
 - The keyword appears only with the declaration inside the class body.
 - They continue to exist until the program completes
+- A static member function can only acesss static data member, it would give error if we use non static member or function in them.
+- They have class level scope, and donot have acess to **this** pointer of the class
 
 ## Important Points
 

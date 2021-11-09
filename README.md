@@ -36,6 +36,31 @@ private:
 };
 
 ```
+**Inline Function**
+
+**Mutable Data member**
+Sometimes there is requirement to modify one or more data members of class / struct through const function even though you don’t want the function to update other members of class / struct. This task can be easily performed by using mutable keyword.
+
+```
+#include <iostream>
+using std::cout;
+ 
+class Test {
+public:
+  int x;
+  mutable int y;
+  Test() { x = 4; y = 10; }
+};
+int main()
+{
+    const Test t1;
+    t1.x = 8;
+    t1.y=12;
+    cout << t1.x;
+    cout<<t1.y;
+    return 0;
+}
+```
 
 ### Objects
 An Object is an instance of a Class.

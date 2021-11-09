@@ -60,6 +60,13 @@ struct Data {
 };
 
 ```
+They are not used much as they have the following drawbacks:
+- It requires that all the data members of the class be public.
+- It puts the burden on the user of the class (rather than on the class author) to
+correctly initialize every member of every object. Such initialization is tedious and
+error-prone because it is easy to forget an initializer or to supply an
+inappropriate initializer.
+- Modification is hard.
 
 ### Objects
 An Object is an instance of a Class.

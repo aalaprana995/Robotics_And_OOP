@@ -56,6 +56,17 @@ There are 3 types of constructors:
 
 - The compiler generates a default constructor automatically only if a class declares no constructors this constructor is called **synthesized default constructor**
 
+```
+Sales_data() = default;
+```
+
+- The =default can appear with the declaration inside the class body or on the definition
+outside the class body.
+
+- Like any other function, if the = default appears inside the
+class body, the default constructor will be inlined; if it appears on the definition
+outside the class, the member will not be inlined by default.
+
 - We must not depend on synthesized default constructor as it might give wrong innitialzations in some cases and can lead to a unknown behaviors.
 
 **Reason 1**

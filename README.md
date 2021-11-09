@@ -104,7 +104,39 @@ the compiler can’t initialize that member. For such classes, we must define ou
 version of the default constructor. Otherwise, the class will not have a usable default
 constructor.
 
-### Parameterized constructor:
+#### Parameterized constructor
+#### Copy constructor
+
+### Friend
+- A class can allow another class or function to access its nonpublic members by making that class or function a friend.
+- Friends are not members of the class and are not affected by the access control of the section in which they are declared.
+- We group friend function and class at the start for better readability.
+```
+class Sales_data {
+// friend declarations for nonmember Sales_data operations added
+friend Sales_data add(const Sales_data&, const Sales_data&);
+friend std::istream &read(std::istream&, Sales_data&);
+friend std::ostream &print(std::ostream&, const Sales_data&);
+// other members and access specifiers as before
+public:
+    Sales_data() = default;
+    Sales_data(const std::string &s, unsigned n, double p):
+               bookNo(s), units_sold(n), revenue(p*n) { }
+    Sales_data(const std::string &s): bookNo(s) { }
+    Sales_data(std::istream&);
+    std::string isbn() const { return bookNo; }
+    Sales_data &combine(const Sales_data&);
+private:
+    std::string bookNo;
+    unsigned units_sold = 0;
+    double revenue = 0.0;
+};
+// declarations for nonmember parts of the Sales_data interface
+Sales_data add(const Sales_data&, const Sales_data&);
+std::istream &read(std::istream&, Sales_data&);
+std::ostream &print(std::ostream&, const Sales_data&);
+
+```
 
 ### Destructor
 Destructor is an instance member function which is invoked automatically whenever an object is going to be destroyed. Meaning, a destructor is the last function that is going to be called before an object is destroyed.

@@ -97,6 +97,7 @@ There are 3 types of constructors:
   1) Default constructors/synthesized default constructor.
   2) Parameterized constructors
   3) Copy constructors
+  4) Delegating constructors
 
 #### Default constructor
 
@@ -135,6 +136,36 @@ constructor.
 #### Parameterized constructor
 
 #### Copy constructor
+
+#### Delegating constructors
+
+- A delegating constructor uses another constructor from its own class to perform its initialization. It is said to “delegate” some (or all) of its work
+to this other constructor.
+
+- Like any other constructor, a delegating constructor has a member initializer list and a function body. 
+- In a delegating constructor, the member initializer list has a single entry that is the name of the class itself. Like other member initializers, the name of
+the class is followed by a parenthesized list of arguments. The argument list must match another constructor in the class.
+- When a constructor delegates to another constructor, the constructor initializer list
+and function body of the delegated-to constructor are both executed.
+
+```
+class class_a {
+public:
+    class_a() {}
+    // member initialization here, no delegate
+    class_a(string str) : m_string{ str } {}
+
+    //can’t do member initialization here
+    // error C3511: a call to a delegating constructor shall be the only member-initializer
+    class_a(string str, double dbl) : class_a(str) , m_double{ dbl } {}
+
+    // only member assignment
+    class_a(string str, double dbl) : class_a(str) { m_double = dbl; }
+    double m_double{ 1.0 };
+    string m_string;
+};
+
+```
 
 ### Friend
 - A class can allow another class or function to access its nonpublic members by making that class or function a friend.

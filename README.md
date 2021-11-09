@@ -33,10 +33,19 @@ Abstract classes can't be used for:
 - Function return types
 - Types of explicit conversions
 ### Access Specifiers
+
 Access modifiers are used to implement an important aspect of Object-Oriented Programming known as Data Hiding. 
 1) Public - members are accessible from outside the class
 2) Private - members cannot be accessed (or viewed) from outside the class
 3) Protected - members cannot be accessed from outside the class, however, they can be accessed in inherited classes.
+
+- A class may contain zero or more access specifiers, and there are no restrictions on
+how often an access specifier may appear. 
+
+- Each access specifier specifies the access
+level of the succeeding members. The specified access level remains in effect until the
+next access specifier or the end of the class body.
+
 ### Constructors 
 - Constructors are special class members which are called by the compiler every time an object of that class is instantiated. 
 - Constructors have the same name as the class and may be defined inside or outside the class definition.
@@ -46,6 +55,15 @@ Access modifiers are used to implement an important aspect of Object-Oriented Pr
 - We use **=default** explicity with default constructor to tell the complier that the constructor in consideration is default constructor.
 
 #### Constructor Initialization List
+- It specifies initial values for one or more data members of the
+object being created. 
+- The constructor initializer is a list of member names, each of
+which is followed by that member’s initial value in parentheses (or inside curly
+braces). Multiple member initializations are separated by commas.
+```
+Sales_data(const std::string &s):
+           bookNo(s), units_sold(0), revenue(0){ }
+```
 
 There are 3 types of constructors:
   1) Default constructors/synthesized default constructor.

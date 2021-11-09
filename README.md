@@ -55,13 +55,18 @@ The capability of a class to derive properties and characteristics from another 
    1) Public mode: If we derive a sub class from a public base class. Then the public member of the base class will become public in the derived class and protected members of the base class will become protected in derived class.
     2) Protected mode: If we derive a sub class from a Protected base class. Then both public member and protected members of the base class will become protected in derived class.
     3) Private mode: If we derive a sub class from a Private base class. Then both public member and protected members of the base class will become Private in derived class. 
-- Friend class can access class protected and private memeber function and attributes. We must make a proper decision while making a class friend as it leads to  
-losse binding.
-- Friendship is not inherited by child classes.
+
+![Screenshot from 2021-11-09 09-35-46](https://user-images.githubusercontent.com/93336207/140943856-c2f42cac-bd81-4f51-9d73-ddfaecef28bc.png)
+
 Type of inheritance:
 1) Multiple Inheritance: Multiple Inheritance is a feature of C++ where a class can inherit from more than one classes. i.e one sub class is inherited from more than one base classes.
 2) Single Inheritance: In single inheritance, a class is allowed to inherit from only one class. i.e. one sub class is inherited by one base class only.
 3) Hierarchical Inheritance: In this type of inheritance, more than one sub class is inherited from a single base class. i.e. more than one derived class is created from a single base class.
+
+- Friend class can access class protected and private memeber function and attributes. We must make a proper decision while making a class friend as it leads to  
+losse binding.
+- Friendship is not inherited by child classes.
+
 ### Virtual Functions 
 A function that only has declaration and may or may not have a defination in the base class, is called a Virtual function. 
 If a class has a virtual function it doesnot becomes an Abstract class, for it to be abstract class it has to have a pure virtual function.

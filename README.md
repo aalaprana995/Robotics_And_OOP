@@ -9,7 +9,10 @@ It is a style of programming. It has the following four features:
 3) Encapsulation
 4) Polymorphism
 ### Class
-- A class in C++ is the building block, that leads to Object-Oriented programming. 
+- A class in C++ is the building block, that leads to Object-Oriented programming.
+- Fundamental idea behind **Class** are **data abstraction** and **encapsulation**.
+**Data abstraction** is a programming technique that relies on **interface** and **implementation**. The interface of a class has operation the user of the class can execute.Implementation has class data members,and function implementation of the operation defined in interface.
+
 - It is a user-defined data type, which holds its own data members and member functions, which can be accessed and used by creating an instance of that class. 
 - A C++ class is like a blueprint for an object.
 - When a class is defined, only the specification for the object is defined; no memory or storage is allocated. To use the data and access functions defined in the class, you need to create objects.
@@ -35,11 +38,20 @@ Access modifiers are used to implement an important aspect of Object-Oriented Pr
 2) Private - members cannot be accessed (or viewed) from outside the class
 3) Protected - members cannot be accessed from outside the class, however, they can be accessed in inherited classes.
 ### Constructors 
-Constructors are special class members which are called by the compiler every time an object of that class is instantiated. Constructors have the same name as the class and may be defined inside or outside the class definition.
+- Constructors are special class members which are called by the compiler every time an object of that class is instantiated. 
+- Constructors have the same name as the class and may be defined inside or outside the class definition.
+- Constructors have no return type, they only have a function body and parameter.
+- **Constructor cannot be declared** **Const**
+- If we donot have a constructor for our class then **default constructor** is called.
+- We use **=default** explicity with default constructor to tell the complier that the constructor in consideration is default constructor.
+
+**Cnstructor Initialization List**
+
 There are 3 types of constructors:
   1) Default constructors
   2) Parameterized constructors
   3) Copy constructors
+
 ### Destructor
 Destructor is an instance member function which is invoked automatically whenever an object is going to be destroyed. Meaning, a destructor is the last function that is going to be called before an object is destroyed.
 - A destructor function is called automatically when the object goes out of scope: 

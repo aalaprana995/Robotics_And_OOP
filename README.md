@@ -22,6 +22,21 @@ It is a style of programming. It has the following four features:
 Following are the points that expound on this difference:
   1) Members of a class are private by default and members of a structure are public by default. 
 
+### Additional Features of Class
+**Defining a Type Member**
+
+```
+class Screen {
+public:
+    typedef std::string::size_type pos;
+private:
+    pos cursor = 0;
+    pos height = 0, width = 0;
+    std::string contents;
+};
+
+```
+
 ### Objects
 An Object is an instance of a Class.
 ### Abstract Class

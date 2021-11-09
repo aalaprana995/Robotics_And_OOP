@@ -108,7 +108,8 @@ Function overloading, multiple functions can have the same name with different p
 ## Code Documentation 
 Doxygen is a code documneting tool.A C or C++ style comment block with some additional markings is done so that doxygen knows it is a piece of structured text that needs to end up in the generated documentation. The next section presents the various styles supported by doxygen. 
 
-# Extra Concepts
+# Extra Concepts And Important points
+## Concepts
 ### Operator Overloading
 The operator keyword declares a function specifying what operator-symbol means when applied to instances of a class. This gives the operator more than one meaning, or "overloads" it. The compiler distinguishes between the different meanings of an operator by examining the types of its operands.
 The name of an overloaded operator is operator x, where x is the operator.
@@ -119,4 +120,46 @@ The name of an overloaded operator is operator x, where x is the operator.
 
 ### Templates 
 
+### Constant Member Function 
+- The const member functions are the functions which are declared as constant in the program.
+- **The object called by these functions cannot be modified**.
+- It is recommended to use **const** keyword so that accidental changes to object are avoided.
+- A const member function can be called by any type of object.
+- Non-const functions can be called by non-const objects only.
+- The **const** keyword is required in both the declaration and the definition.
+```
+// constant_member_function.cpp
+class Date
+{
+public:
+   Date( int mn, int dy, int yr );
+   int getMonth() const;     // A read-only function
+   void setMonth( int mn );   // A write function; can't be const
+private:
+   int month;
+};
 
+int Date::getMonth() const
+{
+   return month;        // Doesn't modify anything
+}
+void Date::setMonth( int mn )
+{
+   month = mn;          // Modifies data member
+}
+int main()
+{
+   Date MyDate( 7, 4, 1998 );
+   const Date BirthDate( 1, 18, 1953 );
+   MyDate.setMonth( 4 );    // Okay
+   BirthDate.getMonth();    // Okay
+   BirthDate.setMonth( 4 ); // C2662 Error
+}
+```
+## Important Points
+
+- Member functions may be defined inside the class itself or outside the class body. Nonmember functions that are part of the interface are declared and defined outside the class.
+- Functions defined in the class are **implicitly inline**
+- **this:** Member functions access the object on which they were called through an extra, implicit parameter named this. When we call a member function, this is initialized with the address of the object on which the function was invoked.
+- It is illegal to define a parameter or variable named **this**.
+- 

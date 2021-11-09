@@ -44,12 +44,14 @@ private:
 **Aggregate Classes**
 - An aggregate class gives users direct access to its members and has special
 initialization syntax. 
-- A class is an aggregate if:
+- A class is an aggregate if:\
+      - All of its data members are public\
+      - It does not define any constructors\
+      - It has no in-class initializers\
+      - It has no base classes or virtual functions\
 
-• All of its data members are public
-• It does not define any constructors
-• It has no in-class initializers
-• It has no base classes or virtual functions
+- The initializers must appear in declaration order of the data members. That is, the
+initializer for the first member is first, for the second is next, and so on.
 
 ```
 struct Data {

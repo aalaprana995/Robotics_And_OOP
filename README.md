@@ -166,6 +166,9 @@ std::istream &read(std::istream&, Sales_data&);
 std::ostream &print(std::ostream&, const Sales_data&);
 
 ```
+- **Although overloaded functions share a common name, they are still different
+functions. Therefore, a class must declare as a friend each function in a set of
+overloaded functions that it wishes to make a friend**
 
 ### Destructor
 

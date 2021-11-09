@@ -45,12 +45,37 @@ Access modifiers are used to implement an important aspect of Object-Oriented Pr
 - If we donot have a constructor for our class then **default constructor** is called.
 - We use **=default** explicity with default constructor to tell the complier that the constructor in consideration is default constructor.
 
-**Cnstructor Initialization List**
+#### Constructor Initialization List
 
 There are 3 types of constructors:
-  1) Default constructors
+  1) Default constructors/synthesized default constructor.
   2) Parameterized constructors
   3) Copy constructors
+
+#### Default constructor
+
+- The compiler generates a default constructor automatically only if a class declares no constructors this constructor is called **synthesized default constructor**
+
+- We must not depend on synthesized default constructor as it might give wrong innitialzations in some cases and can lead to a unknown behaviors.
+
+**Reason 1**
+
+Some classes, the synthesized default constructor does the wrong thing. 
+Objects of built-in or compound type (such as arrays and pointers) that are defined inside a block
+have undefined value when they are default initialized. The same rule
+applies to members of built-in type that are default initialized. Therefore, classes that
+have members of built-in or compound type should ordinarily either initialize those
+members inside the class or define their own version of the default constructor.
+
+**Reason 2**
+
+Sometimes the compiler is unable to synthesize one. For example, if a class has a
+member that has a class type, and that class doesn’t have a default constructor, then
+the compiler can’t initialize that member. For such classes, we must define our own
+version of the default constructor. Otherwise, the class will not have a usable default
+constructor.
+
+### Parameterized constructor:
 
 ### Destructor
 Destructor is an instance member function which is invoked automatically whenever an object is going to be destroyed. Meaning, a destructor is the last function that is going to be called before an object is destroyed.

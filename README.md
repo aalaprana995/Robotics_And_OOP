@@ -41,6 +41,24 @@ private:
 ```
 **Inline Function**
 
+**Aggregate Classes**
+- An aggregate class gives users direct access to its members and has special
+initialization syntax. 
+- A class is an aggregate if:
+
+• All of its data members are public
+• It does not define any constructors
+• It has no in-class initializers
+• It has no base classes or virtual functions
+
+```
+struct Data {
+    int ival;
+    string s;
+};
+
+```
+
 ### Objects
 An Object is an instance of a Class.
 

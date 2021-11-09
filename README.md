@@ -9,11 +9,16 @@ It is a style of programming. It has the following four features:
 3) Encapsulation
 4) Polymorphism
 ### Class
-A class in C++ is the building block, that leads to Object-Oriented programming. It is a user-defined data type, which holds its own data members and member functions, which can be accessed and used by creating an instance of that class. A C++ class is like a blueprint for an object.
-When a class is defined, only the specification for the object is defined; no memory or storage is allocated. To use the data and access functions defined in the class, you need to create objects.
-In C++, a structure is the same as a class except for a few differences. The most important of them is security. A Structure is not secure and cannot hide its implementation details from the end-user while a class is secure and can hide its programming and designing details.
-Following are the points that expound on this difference: 
-1) Members of a class are private by default and members of a structure are public by default. 
+- A class in C++ is the building block, that leads to Object-Oriented programming. 
+- It is a user-defined data type, which holds its own data members and member functions, which can be accessed and used by creating an instance of that class. 
+- A C++ class is like a blueprint for an object.
+- When a class is defined, only the specification for the object is defined; no memory or storage is allocated. To use the data and access functions defined in the class, you need to create objects.
+- In C++, a structure is the same as a class except for a few differences. 
+- The most important of them is security. A Structure is not secure and cannot hide its implementation details from the end-user while a class is secure and can hide its programming and designing details.
+
+Following are the points that expound on this difference:
+  1) Members of a class are private by default and members of a structure are public by default. 
+
 ### Objects
 An Object is an instance of a Class.
 ### Abstract Class

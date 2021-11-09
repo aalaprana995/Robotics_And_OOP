@@ -426,6 +426,21 @@ int main()
 }
 ```
 
+### Static Class Member
+
+- Static members can be public or private.
+- The type of a static data member can be const, reference, array, class type, etc.
+- There is always only one copy static data member, that is shared by all the objects of the class 
+- All static data is initialized to 0 when first object is created, if no other initialization is present
+- They are not initialized by the class’ constructors. Moreover, in general, we may not initialize a static member inside the class. Instead, we must define and initialize each static data member outside the class body.
+- They continue to exist until the program completes
+
+### Static Member Function 
+
+- Static member function inside or outside of the class body. 
+- When we define a static member outside the class, we do not repeat the static keyword. 
+- The keyword appears only with the declaration inside the class body.
+- They continue to exist until the program completes
 
 ## Important Points
 

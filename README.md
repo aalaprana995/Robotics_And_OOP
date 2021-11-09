@@ -39,6 +39,7 @@ private:
 **Inline Function**
 
 **Mutable Data member**
+
 Sometimes there is requirement to modify one or more data members of class / struct through const function even though you don’t want the function to update other members of class / struct. This task can be easily performed by using mutable keyword.
 
 ```

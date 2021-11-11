@@ -26,6 +26,47 @@ definition it inherits from the base class, by providing its own definition.
 ![main-qimg-db80cfa9f812b2c114c81d22f458235a](https://user-images.githubusercontent.com/93336207/141322188-960cada0-995f-4e82-8391-f2dbcab07360.png)
 ![Inheritance +public,+protected,+private+Summary](https://user-images.githubusercontent.com/93336207/141322608-b665fba4-b65a-4550-b1dc-9321d187b3ec.jpg)
 
+- Access to the members of a base class is controlled by the access specifiers in the base class itself.
+- The derivation access specifier has no effect on whether members (and friends) of a
+derived class may access the members of its own direct base class.
+```
+class Base {
+public:
+    void pub_mem();   // public member
+protected:
+    int prot_mem;     // protected member
+private:
+    char priv_mem;    // private member
+};
+struct Pub_Derv : public Base {
+    // ok: derived classes can access protected members
+    int f() { return prot_mem; }
+    // error: private members are inaccessible to derived classes
+    char g() { return priv_mem; }
+};
+struct Priv_Derv : private Base {
+    // private derivation doesn't affect access in the derived class
+    int f1() const { return prot_mem; }
+};
+```
+
+- A derived class member or friend may access the protected members of the base class only through a derived object. The derived class has no special access to the protected members of base-class objects.
+
+```
+class Base {
+protected:
+    int prot_mem;     // protected member
+};
+class Sneaky : public Base  {
+    friend void clobber(Sneaky&);  // can access Sneaky::prot_mem
+    friend void clobber(Base&);    // can't access Base::prot_mem
+    int j;                          // j is private by default
+};
+// ok: clobber can access the private and protected members in Sneaky objects
+void clobber(Sneaky &s) { s.j = s.prot_mem = 0; }
+// error: clobber can't access the protected members in Base
+void clobber(Base &b) { b.prot_mem = 0; }
+```
 ### Defining a Derived Class
 - A derived class must specify from which class(es) it inherits. 
 - It does so in its class derivation list, which is a colon followed by a comma-separated list of names of previously defined classes.
@@ -151,3 +192,22 @@ operator to do so
 double undiscounted = baseP->Quote::net_price(42);
 ```
 ## Abstract Base Classes
+- A class that has atleast 1 pure virtua function is called Abstract class
+### Pure Virtual Function
+- Unlike ordinary virtuals, a pure virtual function does not have to be defined. 
+- We specify that a virtual function is a pure virtual by writing = 0 in place of a function body (i.e., just before the semicolon that ends the declaration). 
+- The = 0 may appear only on the declaration of a virtual function in the class body.
+- Although we cannot define objects of this type directly, constructors in classes derived would require a base class constructor when it tries to form an object of derived class.
+- It is worth noting that we can provide a definition for a pure virtual. However, the
+function body must be defined outside the class. That is, we cannot provide a function
+body inside the class for a function that is = 0.
+**A Derived Class Constructor Initializes Its Direct Base Class Only**
+
+### Default Inheritance Protection Levels
+
+By default, a derived class defined with the class keyword has private inheritance; a derived class defined with struct has public inheritance
+```
+class Base { /* ...   */ };
+struct D1 : Base { /* ...   */ };   // public inheritance by default
+class D2 : Base { /* ...   */ };    // private inheritance by default
+```

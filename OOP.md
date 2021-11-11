@@ -3,7 +3,7 @@
 - **Base class** is at the root of the hierarchy, from which the other classes inherit, directly or indirectly.
 - These inheriting classes are known as derived classes. The base class defines those members that are common to the types in the hierarchy.
 - Each derived class defines those members that are specific to the derived class itself.
-- A derived class must specify the class(es) from which it intends to inherit. It does so in a class derivation list, which is a colon followed by a comma-separated list of base classes each of which may have an optional access specifier.
+- A derived class must specify the class(es) from which it intends to inherit. It does so in a class **derivation list**, which is a colon followed by a comma-separated list of base classes each of which may have an optional access specifier.
  ```
  class Bulk_quote : public Quote { // Bulk_quote inherits from Quote
 public:

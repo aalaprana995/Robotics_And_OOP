@@ -90,13 +90,12 @@ Bulk_quote derived("0-201-82470-1", 50, 5, .19);
 print_total(cout, derived, 10); // calls Bulk_quote::net_price
 ```
 
-***Virtuals are resolved at run time only if the call is made through a
+**Virtuals are resolved at run time only if the call is made through a
 reference or pointer. Only in these cases is it possible for an object’s
-dynamic type to differ from its static type.***
+dynamic type to differ from its static type.**
+
 ### Virtual Functions in a Derived Class
 
-**Final**
-If we want the derived class not to override the base class method we make that base class method as **final**
 ```
 struct B {
     virtual void f1(int) const;
@@ -108,6 +107,9 @@ struct D1 : B {
     void f2(int) override; // error: B has no f2(int) function
     void f3() override;    // error: f3 not virtual
     void f4() override;    // error: B doesn't have a function named f4
-    ```
-
+ 
+ ```
+ **Final**
+ 
+If we want the derived class not to override the base class method we make that base class method as **final**
 

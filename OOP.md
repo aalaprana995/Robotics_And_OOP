@@ -96,6 +96,10 @@ dynamic type to differ from its static type.**
 
 ### Virtual Functions in a Derived Class
 
+- When a derived class overrides a virtual function, it may, but is not required to, repeat the virtual keyword. Once a function is declared as virtual, it remains virtual in all the derived classes
+- A derived-class function that overrides an inherited virtual function must have exactly the same parameter type(s) as the base-class function that it overrides
+- With one exception, the return type of a virtual in the derived class also must match the return type of the function from the base class.
+
 ```
 struct B {
     virtual void f1(int) const;
@@ -111,5 +115,39 @@ struct D1 : B {
  ```
  **Final**
  
-If we want the derived class not to override the base class method we make that base class method as **final**
+If we want the derived class not to override the base class method we make that base class method as **final**.We can also designate a function as final. Any attempt to override a function that has been defined as final will be flagged as an error.
+```
+struct B {
+    virtual void f1(int) const;
+    virtual void f2();
+    void f3();
+};
+struct D1 : B {
+    void f1(int) const override; // ok: f1 matches f1 in the base
+    void f2(int) override; // error: B has no f2(int) function
+    void f3() override;    // error: f3 not virtual
+    void f4() override;    // error: B doesn't have a function named f4
+};
+struct D2 : B {
+    // inherits f2() and f3() from B and overrides f1(int)
+    void f1(int) const final; // subsequent classes can't override f1
+(int)
+};
+struct D3 : D2 {
+    void f2();          // ok: overrides f2 inherited from the indirect base,
+B
+    void f1(int) const; // error: D2 declared f2 as final
+};
+```
 
+### Virtual Functions and Default Arguments
+
+### Preventing Virtual Mechanism
+In some cases, we want to prevent dynamic binding of a call to a virtual function; we
+want to force the call to use a particular version of that virtual. We can use the scope
+operator to do so
+```
+//  calls the version from the base class regardless of the dynamic type of baseP
+double undiscounted = baseP->Quote::net_price(42);
+```
+## Abstract Base Classes

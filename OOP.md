@@ -57,3 +57,57 @@ are initialized in the order in which they are declared in the class.
 Bulk_quote(const std::string& book, double p, std::size_t qty, double disc) :Quote(book, p), min_qty(qty), discount(disc) { }
 
 ```
+### Inheritance and static Members
+If a base class defines a static member (§7.6, p. 300), there is only one such
+member defined for the entire hierarchy. Regardless of the number of classes derived
+from a base class, there exists a single instance of each static member.
+### Preventing Inheritance
+- Sometimes we define a class that we don’t want others to inherit from.
+- Or we might define a class for which we don’t want to think about whether it is appropriate as a
+base class.
+- Under the new standard, we can prevent a class from being used as a base by following the class name with **final**.
+```
+class NoDerived final { /*  */ }; // NoDerived can't be a base class
+```
+### Conversions and Inheritance
+We can bind a pointer or reference to a base-class type to an object of a type derived from that base class.
+### Static Type and Dynamic Type
+
+### There Is No Implicit Conversion from Base to Derived ...
+
+## Virtual Functions
+- Ordinarily, if we do not use a function, we don’t need to supply a definition for that function. 
+- However, we must define every virtual function, regardless of whether it is used, because the compiler has no way to determine whether a virtual function is used.
+### Calls to Virtual Functions May Be Resolved at Run Time
+When a virtual function is called through a reference or pointer, the compiler
+generates code to decide at run time which function to call. The function that is called
+is the one that corresponds to the dynamic type of the object bound to that pointer or
+reference.
+```
+Quote base("0-201-82470-1", 50);
+print_total(cout, base, 10);    // calls Quote::net_price
+Bulk_quote derived("0-201-82470-1", 50, 5, .19);
+print_total(cout, derived, 10); // calls Bulk_quote::net_price
+```
+
+***Virtuals are resolved at run time only if the call is made through a
+reference or pointer. Only in these cases is it possible for an object’s
+dynamic type to differ from its static type.***
+### Virtual Functions in a Derived Class
+
+**Final**
+If we want the derived class not to override the base class method we make that base class method as **final**
+```
+struct B {
+    virtual void f1(int) const;
+    virtual void f2();
+    void f3();
+};
+struct D1 : B {
+    void f1(int) const override; // ok: f1 matches f1 in the base
+    void f2(int) override; // error: B has no f2(int) function
+    void f3() override;    // error: f3 not virtual
+    void f4() override;    // error: B doesn't have a function named f4
+    ```
+
+
